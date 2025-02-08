@@ -7,11 +7,9 @@ export const useMetrics = () => {
     const query = useQuery<ResponseType , Error>({
         queryKey : ["metrics"],
         queryFn : async () => {
-            const response = axios.get("/api/metrics")
+            const response = await axios.get("/api/metrics")
       
-            const data = (await response).data
-      
-            return data
+            return response.data;
           }
     })
 

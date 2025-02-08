@@ -7,12 +7,12 @@ import { DollarSign, Music, Radio, Star } from "lucide-react";
 export const CardContainers = () => {
   const { data } = useMetrics();
 
-  if (!data) return;
+  console.log("Metrics data : ",data)
 
   const { totalstream, totalStreams, revenue, topArtist } = data!;
   return (
     <div className="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 gap-4 mb-5">
-      <CardWrapper
+    <CardWrapper
     icon={DollarSign}
     mainNumber={`$${revenue.toLocaleString()}`}
     text="Total Revenue"
