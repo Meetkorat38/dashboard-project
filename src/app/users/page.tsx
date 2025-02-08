@@ -1,10 +1,10 @@
 import { UserTable } from '@/components/final-table'
 import React from 'react'
 
-const Users = () => {
+const UsersPage = () => {
   return (
       <UserTable/>
   )
 }
 
-export default Users
+export default UsersPage
