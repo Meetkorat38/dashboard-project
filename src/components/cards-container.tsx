@@ -9,7 +9,7 @@ export const CardContainers = () => {
 
   if (!data) return;
 
-  const { totalstream, totalStreams, revenue, topArtist } = data;
+  const { totalstream, totalStreams, revenue, topArtist } = data!;
   return (
     <div className="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 gap-4 mb-5">
       <CardWrapper
