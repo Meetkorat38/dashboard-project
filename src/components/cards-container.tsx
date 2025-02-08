@@ -1,13 +1,14 @@
 "use client";
+
 import { CardWrapper } from "@/components/card-wrapper";
 import { useMetrics } from "@/features/metrics-get-api";
 import { DollarSign, Music, Radio, Star } from "lucide-react";
 
 
 export const CardContainers = () => {
-  const { data } = useMetrics();
+  const { data  } = useMetrics();
 
-  console.log("Metrics data : ",data)
+    if(!data) return
 
   const { totalstream, totalStreams, revenue, topArtist } = data!;
   return (
