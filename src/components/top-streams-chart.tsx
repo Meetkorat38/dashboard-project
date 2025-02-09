@@ -43,24 +43,9 @@ const chartConfig = {
 
 
 export const TopSongsChart = () => {
-  const {data , isPending , isError} = useStreamData()
+  const {data} = useStreamData()
 
-  console.log("analytics isError : " , isError)
-  console.log("analytics isPending : " , isPending)
-
-
-
-  console.log("analytics data : " , data)
-
-  if(isPending){
-    return (
-      <p>Loading...</p>
-    )
-  }
-
-  console.log("analytics isPending 2: " , isPending)
-
-
+  if(!data) return
 
   const  getTop5Streams = (streams: Stream[]): Stream[] => {
     return streams

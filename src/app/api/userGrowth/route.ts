@@ -8,7 +8,7 @@ export async function GET() {
     const fileContents = fs.readFileSync(filePath, "utf8");
     const data = JSON.parse(fileContents);
 
-    return NextResponse.json(data.userGrowth);
+    return NextResponse.json(data.userActiveGrowth);
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json({ error: "Error reading data", details: errorMessage });

@@ -8,7 +8,6 @@ export const useMetrics = () => {
         queryKey : ["metrics"],
         queryFn : async () => {
             const response = await axios.get("/api/metrics")
-            console.log('API response:', response.data);
             return response.data;
           }
     })

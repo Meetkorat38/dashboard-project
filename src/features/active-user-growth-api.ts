@@ -5,10 +5,8 @@ export const useActiveUserGrowth = () => {
     const query = useQuery({
         queryKey : ["active"],
         queryFn : async () => {
-            const response = axios.get("/api/userGrowth")
-      
-            const data = (await response).data
-      
+            const response = await axios.get("/api/userGrowth")
+            const data = await response.data
             return data
           }
     })

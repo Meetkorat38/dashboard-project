@@ -51,7 +51,10 @@ type Chart = {
 export const ActiveUserChart = () => {
   const { data: chartData, isPending } = useUserGrowth();
 
+  
   const [timeRange, setTimeRange] = useState("30d");
+  
+  if(!chartData) return
 
   const filteredData = chartData
     ? chartData.filter((item: Chart) => {

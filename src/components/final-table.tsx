@@ -4,18 +4,9 @@ import { useStreamData } from "@/features/stream-data-api";
 import { columnsStreams } from "./columns";
 import { DataTable } from "./data-table";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Loader } from "lucide-react";
 
 export const UserTable = () => {
-  const { data , isPending } = useStreamData();
-
-  if(isPending) {
-    return(
-      <div className="flex items-center justify-center">
-        <Loader className="animate-spin size-3"/>
-      </div>
-    )
-  }
+  const { data  } = useStreamData();
 
   if(!data) return
 

@@ -54,6 +54,7 @@ const chartConfig = {
 
 export const RevenueDistribution = () => {
     const {data : chartData} = useRevenueDistrbiution()
+    if(!chartData) return
   return (
     <Card className="flex flex-col lg:w-[35vw]">
       <CardHeader className="items-center pb-0">

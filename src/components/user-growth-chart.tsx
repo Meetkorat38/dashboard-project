@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { TrendingUp } from "lucide-react";
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 
 import {
   Card,
@@ -10,14 +10,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
-import { useActiveUserGrowth } from "@/features/active-user-growth-api"
+} from "@/components/ui/chart";
+import { useActiveUserGrowth } from "@/features/active-user-growth-api";
 
 const chartConfig = {
   totalUsers: {
@@ -28,17 +28,18 @@ const chartConfig = {
     label: "Active Users",
     color: "hsl(var(--chart-2))",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
-export const ActiveUserGrowthChart = () =>  {
-    const {data:chartData } = useActiveUserGrowth()
+export const ActiveUserGrowthChart = () => {
+  const { data: chartData } = useActiveUserGrowth();
 
-    // console.log(chartData)
+  if(!chartData)return
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Line Chart - Multiple</CardTitle>
-        <CardDescription>January - December 2024</CardDescription>
+        <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -57,7 +58,6 @@ export const ActiveUserGrowthChart = () =>  {
               axisLine={false}
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
-
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Line
@@ -84,11 +84,11 @@ export const ActiveUserGrowthChart = () =>  {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 12 months
+              Showing total visitors for the last 6 months
             </div>
           </div>
         </div>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
