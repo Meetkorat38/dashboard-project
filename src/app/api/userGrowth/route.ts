@@ -1,7 +1,16 @@
 import { NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 
 export async function GET() {
-  const response = await fetch(`${process.env.BACKEND_URL!}/userActiveGrowth`);
-  const data = await response.json();
-  return NextResponse.json(data);
+  try {
+    const filePath = path.join(process.cwd(), "db.json");
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const data = JSON.parse(fileContents);
+
+    return NextResponse.json(data.userGrowth);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ error: "Error reading data", details: errorMessage });
+  }
 }

@@ -1,18 +1,16 @@
-import axios from "axios";
 import { NextResponse } from "next/server";
-
-/*
- "metrics": {
-      "totalstream": 150000,
-      "activestream": 12000,
-      "totalStreams": 4500000,
-      "revenue": 1200000,
-      "topArtist": "The Weeknd"
-    },
- */
+import fs from "fs";
+import path from "path";
 
 export async function GET() {
-  const response = await axios.get(`${process.env.BACKEND_URL!}/metrics`);
-  const data = await response.data
-  return NextResponse.json(data);
+  try {
+    const filePath = path.join(process.cwd(), "db.json");
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const data = JSON.parse(fileContents);
+
+    return NextResponse.json(data.metrics);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ error: "Error reading data", details: errorMessage });
+  }
 }
